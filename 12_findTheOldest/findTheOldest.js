@@ -2,7 +2,23 @@ const findTheOldest = function(a) {
     let oldestAge = 0;
     let result = {};
     a.forEach(element => {
-        let age = element.yearOfDeath - element.yearOfBirth;
+        let age;
+        let yearOfDeath = element.yearOfDeath;
+        let yearOfBirth = element.yearOfBirth;
+
+        if (yearOfBirth == undefined) {
+            let curDate = new Date;
+            yearOfBirth = curDate.getFullYear();
+        };
+
+        if (yearOfDeath == undefined) {
+            let curDate = new Date;
+            yearOfDeath = curDate.getFullYear();
+
+        };
+
+        age = yearOfDeath - yearOfBirth;
+        
         if (age > oldestAge) {
             oldestAge = age;
             result = element;
